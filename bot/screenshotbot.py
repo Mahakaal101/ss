@@ -9,7 +9,7 @@ from contextlib import contextmanager
 from pyrogram import Client, __version__
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from bot.config import Config
+from bot.config import SESSION_NAME, BOT_TOKEN, API_HASH, API_ID
 from bot.workers import Worker
 from bot.utils.broadcast import Broadcast
 
@@ -20,11 +20,11 @@ log = logging.getLogger(__name__)
 class ScreenShotBot(Client):
     def __init__(self):
         super().__init__(
-            session_name=Config.SESSION_NAME,
-            bot_token=Config.BOT_TOKEN,
-            api_id=Config.API_ID,
-            api_hash=Config.API_HASH,
-            plugins=dict(root="bot/plugins"),
+            session_name=SESSION_NAME,
+            bot_token=BOT_TOKEN,
+            api_id=API_ID,
+            api_hash=API_HASH,
+            plugins=("root": "bot/plugins"),
         )
         self.process_pool = Worker()
         self.CHAT_FLOOD = defaultdict(
