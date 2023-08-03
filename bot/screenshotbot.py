@@ -6,7 +6,7 @@ import random
 import asyncio
 from contextlib import contextmanager
 
-from pyrogram import Client
+from pyrogram import Client, __version__
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from bot.config import Config
